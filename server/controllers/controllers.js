@@ -14,7 +14,7 @@ module.exports = {
     readOne: (req, res) => {
         Author.findOne({_id:req.params.id})
             .then((author) => res.json({author:author}))
-            .catch((err) => res.json(err))
+            .catch((err) => res.status(400).json(err))
     },
     updateOne: (req, res) => {
         Author.updateOne({_id:req.params.id}, req.body, {new: true, runValidators:true})
